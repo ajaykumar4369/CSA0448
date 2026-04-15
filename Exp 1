@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    pid_t pid;
+    pid = fork(); 
+    if (pid < 0) {
+        printf("Process creation failed\n");
+    }
+    else if (pid == 0) {
+        printf("Child Process\n");
+        printf("PID: %d\n", getpid());
+        printf("Parent PID: %d\n", getppid());
+    }
+    else {
+        printf("Parent Process\n");
+        printf("PID: %d\n", getpid());
+        printf("Child PID: %d\n", pid);
+    }
+    return 0;
+}
+
+Input:
+Not required
+
+Output:
+
+Parent Process:-
+PID: 24394
+Child PID: 24395
+
+Child Process:-
+PID: 24395
+Parent PID: 24394
